@@ -1,0 +1,44 @@
+<!--Canvas permite desenhar na tela do console como um canvas de verdade.-->
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title> Canvas Primeiros Passos </title>
+    </head>
+
+    <body>
+        <canvas width="600" height="400"></canvas>
+    </body>
+</html>
+
+<script>
+
+    var tela = document.querySelector ("canvas");//seleciona elemento do HTML para dentro do SCRIPT.
+    var pincel = tela.getContext("2d");//passa a informação de que tipo de desenho será, aqui '2D'.
+
+    pincel.fillStyle = "lightgrey";//fillStyle precisa vir antes do fillRect ou não funcionara a cor de fundo.
+    pincel.fillRect(0, 0, 600, 400);//Não pode passar do tamanho pre definido no HTML pois não fará diferença.
+
+    pincel.fillStyle = "green";
+    pincel.fillRect(0, 0, 200, 400);
+
+    pincel.fillStyle = "red";
+    pincel.fillRect(400, 0, 600, 400);
+
+    pincel.fillStyle = "yellow"; //para fazer triângulos
+    pincel.beginPath();//função para iniciar o desenho na tela através de ponto selecionados.
+    pincel.moveTo(300, 200);//1º ponto.  importante --> moveTo <--
+    pincel.lineTo(200, 400);//2º ponto.  importante --> lineTo <--
+    pincel.lineTo(400, 400);//3º ponto.  importante --> lineTo <--
+    pincel.fill();//Finaliza a função, preenchendo o fundo.
+
+    pincel.fillStyle = "blue"; //Para fazer uma bolinha.
+    pincel.beginPath();
+    pincel.arc(300, 200, 50, 0, 2 * 3.14);
+    pincel.fill();
+   
+</script>

@@ -1,0 +1,57 @@
+<!--Desenha esquadro-->
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title> Atividade Canvas esquadro </title>
+    </head>
+
+    <body>
+        <canvas width="600" height="400"></canvas>
+    </body>
+</html>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'lightgrey';
+    pincel.fillRect(0, 0, 600, 400);
+    
+    pincel.fillStyle = 'pink';
+    pincel.beginPath();
+    pincel.moveTo(150, 60);
+    pincel.lineTo(150, 350);
+    pincel.lineTo(500, 350);
+    pincel.fill();
+
+    pincel.fillStyle = 'lightgrey';
+    pincel.beginPath();
+    pincel.moveTo(200, 150);
+    pincel.lineTo(200, 300);
+    pincel.lineTo(380, 300);
+    pincel.fill();
+
+/* ~~ Resolução do professor ~~ 
+
+    pincel.fillStyle = 'pink';
+    pincel.beginPath();
+    pincel.moveTo(50, 50);
+    pincel.lineTo(50, 400);
+    pincel.lineTo(400, 400);
+    pincel.fill();
+
+    pincel.fillStyle = 'lightgrey';
+    pincel.beginPath();
+    pincel.moveTo(100, 175);
+    pincel.lineTo(100, 350);
+    pincel.lineTo(275, 350);
+    pincel.fill();
+*/
+
+</script>
