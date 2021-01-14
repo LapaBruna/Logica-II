@@ -1,0 +1,59 @@
+<!--Canvas draw - Fraction-->
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <title>Graphic Fractions</title>
+    </head>
+            
+    <body>
+
+        <h1>Graphic Fractions</h1>
+        <p>Using JS's squares and borders was made this fraction draw in the canvas also was used JS to write.</p>
+        
+        <canvas width="600" height="400"> </canvas>
+    
+    </body>
+</html>
+    
+<script>
+
+//resolução pronta para escrever na tela
+        function desenhaTexto(texto, x , y) {
+            var tela = document.querySelector('canvas');
+            var pincel = tela.getContext('2d');
+
+            pincel.font='20px Georgia';
+            pincel.fillStyle='black';
+            pincel.fillText(texto, x, y);    
+        }
+        desenhaTexto("Which fraction is this?", 50, 30);
+//resolução pronta para escrever na tela
+
+//Resposta atividade. Eu que fiz.
+
+    function desenhaFracao (x, y, color) {
+
+        var tela = document.querySelector("canvas");
+        var pencil = tela.getContext("2d");
+
+        pencil.fillStyle = color;
+        pencil.fillRect(x, y, 50, 50);
+
+        pencil.strokeStyle = "black";
+        pencil.strokeRect(x, y, 50, 50);
+
+        pencil.strokeRect(x+50, y, 50, 50);
+    }
+
+    for (var x=50; x <=150; x = x+50) {
+        
+        desenhaFracao (x, 50, "pink");
+    }
+
+
+</script>

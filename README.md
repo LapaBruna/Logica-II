@@ -1,4 +1,4 @@
-# Logica-II
+# Logic-II
 
 Folders with my the progress in the course Logic II
 

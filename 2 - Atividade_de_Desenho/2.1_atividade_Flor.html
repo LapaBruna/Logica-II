@@ -1,0 +1,75 @@
+<!--Drawing flowers-->
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Drawing Flowers</title>
+    </head>
+        
+    <body>
+        <h1>Drawing Flowers</h1>
+        <p>In this activity was made circles using JS to draw little flowers in the canvas</p>
+        
+        <canvas width="600" height="400"> </canvas>
+    </body>
+</html>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    
+    pincel.fillStyle = 'green';
+    pincel.fillRect(0, 0, 600, 400);
+
+    function desenhaCirculo(x, y, raio, cor) {
+
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2*3.14);
+        pincel.fill();
+        
+    }
+
+    function coordenadasBolinha (x, y ) {
+    
+        desenhaCirculo(x+30, y, 28, "pink"); // direita
+        desenhaCirculo(x,    y-30, 28, "pink"); // topo
+        desenhaCirculo(x-30, y, 28, "pink"); // esquerda
+        desenhaCirculo(x,    y+30, 28, "pink"); // em baixo    
+        
+        desenhaCirculo(x,    y, 18, "yellow"); // centro
+    }
+
+//Posso passar as coordenadas sem a repetição. EX: coordenadasBolinha (200, 300 )
+//Estrutura para repetir a for na tela.
+    var x1=0;
+    var y1=0;
+
+    for (cont=0; cont<=5; cont++) {
+
+        x1=x1+110;
+        y1=y1+70
+        coordenadasBolinha(x1,y1);
+    }
+
+/*
+
+    function desenhaFlor(x, y) {
+
+        desenhaCirculo(x, y+20, 10, 'blue');
+        desenhaCirculo(x, y, 10, 'red');
+        desenhaCirculo(x, y-20, 10, 'yellow');
+        desenhaCirculo(x-20, y, 10, 'orange');
+        desenhaCirculo(x+20, y, 10, 'black');
+    }
+
+    desenhaFlor(300, 200);
+
+*/
+
+</script>

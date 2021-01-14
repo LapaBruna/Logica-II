@@ -1,0 +1,83 @@
+<!-- With the knowledge from the course I have made this program to practice -->
+
+<DOCTYPE html>
+    
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+        <title>Making Squares</title>
+    </head>
+
+    <body>
+
+        <h1>Making Squares</h1>
+        <p> When the button is clicked it will appear a new square with random coordination in the canvas area </p>
+
+        <canvas width="600" height="400"> </canvas>
+        <br><br>
+
+        <button> Click Me </button>
+    </body>
+</html>
+
+<script>
+
+// Função que cria o quadrado com as coordenadas aleatória par X e Y os click do usuário.
+    function desenhaQuadrado (x, y, cor) {  
+        
+        var tela = document.querySelector("canvas");
+        var pincel = tela.getContext("2d");
+
+        pincel.fillStyle = cor; //quadrado rosa. 
+        pincel.fillRect (x, y, 50, 50); //coordenadas do quadrado.
+
+        pincel.strokeStyle = "red"; //borda preta.
+        pincel.strokeRect (x, y, 50, 50); //coordenadas da borda.
+    }
+
+    function quadradoCinza (x2, y2, cor2) {
+        
+        var tela = document.querySelector("canvas");
+        var pincel = tela.getContext("2d");
+
+        pincel.fillStyle = cor2; //quadrado rosa. 
+        pincel.fillRect (x2, y2, 50, 50); //coordenadas do quadrado.
+
+        pincel.strokeStyle = "pink"; //borda preta.
+        pincel.strokeRect (x2, y2, 50, 50); //coordenadas da borda
+
+    }
+
+// Estrutura de repetição para os quadrados na tela.
+// X2 começa no ponto zero e vai até o limite da tela.
+// y2começa no ponto zero e vai até o limite da tela.
+    for(var x2 = 0; x2 < 600; x2 = x2 + 50) {
+        
+        quadradoCinza(x2, 0, "lightgrey");
+        
+        for (var y2=0; y2 <400; y2 = y2 + 50) {
+            
+            quadradoCinza (x2, y2, );
+        }
+    }
+
+// Função que cria X, Y aleatórios.
+    function coordenadas () {
+
+        return (Math.round(Math.random()*1000), Math.round(Math.random()*350));
+    }
+
+// Chamando a função coordenadas .
+    function click () {
+
+        desenhaQuadrado(coordenadas (), coordenadas (), "pink");
+    }
+
+// USUÁRIO cria quadrado rosa ao clicar no botão. 
+
+    var button = document.querySelector("button");
+    button.onclick = click;
+
+</script>
