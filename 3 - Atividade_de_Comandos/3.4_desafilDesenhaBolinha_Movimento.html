@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <title> Desenha Bolinha Desafio</title>
+    </head>
+            
+    <body>
+        <h1> Desenha bolinha + movimento do mouse</h1>
+        <p> Sim já desenhamos uma bolinha, mas agora você pode manter o mouse clicado e move-lo, você pode fazer sua propria arte. <br>Experimente.</p>
+
+        <canvas width="600" height="400"> </canvas>
+    </body>
+</html>
+
+<script>
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'lightgrey';
+    pincel.fillRect(0, 0, 600, 400);
+    
+    var desenha = false;
+
+    function desenhaCirculo(evento) {
+        
+        if (desenha) {
+            var x = evento.pageX - tela.offsetLeft;
+            var y = evento.pageY - tela.offsetTop;
+            
+            pincel.fillStyle = 'red';
+            pincel.beginPath();
+            pincel.arc(x, y, 10, 0, 2 * 3.14);
+            pincel.fill();
+            console.log(x + ',' + y);
+        }
+    }
+
+    function habilitaDesenho () {
+        
+        desenha = true;
+        tela.onmousemove = desenhaCirculo;
+    }
+
+    tela.onmouseup = function() { 
+    /* Outra forma de declarar a função
+        a função fica associada oa click ou não do MOUSE */
+        
+        desenha = false;
+    }
+    
+    tela.onmousedown = habilitaDesenho;
+    //tela.onmouseup = desabilitaDesenho;
+
+
+/*
+    ~~ RESOLUÇÃO DO PROFESSOR ~~ 
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'grey';
+    pincel.fillRect(0, 0, 600, 400);
+
+    var desenha = false;
+
+  // atribuindo diretamente a função anônima
+   tela.onmousemove = function(evento) {
+
+        if(desenha) {
+            var x = evento.pageX - tela.offsetLeft;
+            var y = evento.pageY - tela.offsetTop;
+            pincel.fillStyle = 'blue';
+            pincel.beginPath();
+            pincel.arc(x, y, 10, 0, 2 * 3.14);
+            pincel.fill();
+        }
+        console.log(x + ',' + y);
+    }
+
+    tela.onmousedown = function() {
+
+        desenha = true;
+    }
+
+     tela.onmouseup = function() {
+
+        desenha = false;
+    }
+*/
+</script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title> Bolinha Animada </title>
+    </head>
+
+    <body>
+        <h1> Bolinha Animada </h1>
+        <hr>
+        <br>
+
+        <canvas width="600" height="400"></canvas>
+    </body>
+</html>
+
+<script> 
+    var tela = document.querySelector("canvas");
+    var pincel = tela.getContext("2d");
+
+    pincel.fillStyle="pink";
+    pincel.fillRect(0, 0, 600, 400);
+
+    function desenhaBolinha(x , y, raio, cor) {
+
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0,2* Math.PI); //Math.PI é equivalente ao numero (3.14).
+        pincel.fill();
+    }
+
+    function limpaTela () {
+
+        pincel.fillStyle="pink";
+        pincel.fillRect(0, 0, 600, 400);
+        
+        //pincel.clearRect(0, 0, 600, 400);
+    }
+
+    var posicaoX =20;
+    var posicaoY =35;
+    var raio =30;
+
+    function animaBolinhaX () {
+                    
+            limpaTela ();
+            desenhaBolinha(posicaoX, posicaoY, raio, "red");
+            posicaoX ++;
+
+            if (posicaoX ==600) {
+                
+                posicaoX =20;
+            }
+        }
+   
+    setInterval(animaBolinhaX, 5);
+
+/* ~~~TESTE~~~ 
+    
+    function animaBolinhaY () {
+                    
+            limpaTela ();
+            desenhaBolinha(posicaoX, posicaoY, raio, "red");
+            posicaoY ++;
+        
+            if (posicaoY>400) {
+                posicaoY=35;
+                return posicaoX =20;
+            }
+    }
+    
+    if (posicaoX==21) {
+
+        setInterval (animaBolinhaY, 5);
+    }
+
+*/
+</script>

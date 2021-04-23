@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <title>Desenha Bolinha + e -</title>
+    </head>
+            
+    <body>
+        <h1> Desenha bolinha GG - PP</h1>
+        <p> Utilize a tecla SHIFT para aumentar o tamanho da sua bolinha e a tecla ALT para diminuir o tamanho da sua bolinha. Experimente.</p>
+
+        <canvas width="600" height="400"> </canvas>
+    </body>
+</html>
+
+<script>
+    var tela = document.querySelector("canvas");
+    var pincel = tela.getContext("2d");
+
+    pincel.fillStyle = "grey";
+    pincel.fillRect(0, 0, 600, 400);
+
+    var cores = ["blue","red", "pink", "green", "yellow"];
+    var troca = 0;
+    var diametro = 10;
+
+    function desenhaBolinha (evento) {
+
+        //Clicar na tela com a tecla ALT pressionada, o raio deve diminuir 5. evento.altKey
+        // 5 em 5 e o tamanho mínimo da bolinha deve ser de 10
+
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop; 
+            
+        if (diametro==40) {
+
+            diametro =10;
+        } else if (diametro==5){
+            
+            diametro =10;
+        }
+
+        if (evento.shiftKey==true) {
+
+            diametro = diametro + 5;
+        } else {
+            diametro =  diametro;
+        }
+
+        if (evento.altKey){
+
+            diametro = diametro -5;
+        }
+
+        //O teste evento.shiftKey==true deve ser executado dentro da função.
+        /*
+            if (evento.shiftKey==true){
+                diametro = 40;
+            }
+        */
+
+        pincel.fillStyle = cores[troca];
+        pincel.beginPath();
+        pincel.arc(x, y, diametro, 0, 2 * 3.14);
+        pincel.fill();
+        console.log(x + ',' + y);
+    }
+
+    function mudaCor () {
+
+        troca ++;
+        alert("Troca de cor.");
+
+        if (troca >= cores.length) {
+
+            troca=0;
+        }
+        return false;
+    }
+
+    tela.onclick  = desenhaBolinha;
+    tela.oncontextmenu = mudaCor;
+/*
+    ~~ RESOLUÇÃO DO PROFESSOR ~~
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'grey';
+    pincel.fillRect(0, 0, 600, 400);
+
+    var raio = 10;
+
+    function desenhaCirculo(evento) {
+
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+
+        console.log(x + ',' + y);
+
+        if (evento.shiftKey && evento.altKey) {
+
+            alert('Só aperte uma tecla por vez, por favor!');
+
+        } else if(evento.shiftKey && raio + 10 <= 40) {
+            raio = raio + 10;
+
+        } else if(evento.altKey && raio - 5 >= 10) {
+            raio = raio - 5;
+
+        }
+
+        pincel.fillStyle = 'blue';
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * 3.14);
+        pincel.fill();
+
+    }
+
+    tela.onclick = desenhaCirculo;
+
+*/
+
+
+</script>

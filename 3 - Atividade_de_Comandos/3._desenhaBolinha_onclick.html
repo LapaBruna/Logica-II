@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <title>Desenha Bolinha onClick</title>
+    </head>
+            
+    <body>
+        <h1> Desenha Bolinha ao clique </h1>
+        <p> Usando as coordenadas do seu mouse vamos desenhar uma bolinha rosa no canvas </p>
+        <p> Experimente, clique no canvas </p>
+
+        <canvas width="600" height="400"> </canvas>
+    </body>
+</html>
+
+<script>
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    
+    pincel.fillStyle = 'grey';
+    pincel.fillRect(0, 0, 600, 400);
+
+    var cores = ['pink', 'red', 'blue']; 
+    //Deve ser declarada de forma global para a função DESENHA CÍRCULO utilizar a VAR.
+    var troca = 0;
+    //VAR troca funciona como um contador para modificar a posição do vetor de corres.
+    var diametro = 10;
+    
+    function desenhaCirculo(evento) { //Não precisa declarar o parâmetro cores pois ele usa a variável GLOBAL.
+
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+        
+        pincel.fillStyle = cores[troca];
+        pincel.beginPath();
+        pincel.arc(x, y, diametro, 0, 2 * 3.14);
+        pincel.fill();
+        console.log(x + ',' + y);
+    }
+
+    function mudaCor() {
+        
+        troca ++;
+        alert("Mudou a cor da bolinha =]  ");
+
+        if (troca >= cores.length) {
+            troca =0;
+        }
+                    
+        return false; // Não permite a abertura do menu ao clicar com o botão direito.
+    }
+
+    tela.onclick = desenhaCirculo; // permite o clique na tela.
+    tela.oncontextmenu = mudaCor; // permite o clique com o botão direito na tela, com uma funcionalidade.
+
+</script>
